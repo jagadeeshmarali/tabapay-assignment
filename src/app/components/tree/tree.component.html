@@ -1,6 +1,6 @@
 <ul>
   <ng-container *ngFor="let item of tree">
-    <li>
+    <li (click)="openDialog(item.name)">
       <span *ngIf="item.children && item.children.length > 0" (click)="toggleExpandState(item.name)" class="expandable"
         [class.expanded]="isExpanded(item.name)">
         {{ isExpanded(item.name) ? '▼' : '►' }} {{ item.name }}
@@ -14,3 +14,5 @@
     </ul>
   </ng-container>
 </ul>
+
+<app-dialog [(show)]="isModalOpen" [nodeName]="selectedNodeName"></app-dialog>

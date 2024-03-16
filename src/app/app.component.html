@@ -1,1 +1,10 @@
-<app-tree [tree]="tree"></app-tree>
+<!-- <app-tree [tree]="tree"></app-tree> -->
+
+<div style="display: flex;">
+  <div style="width: 50%;">
+    <app-tree [tree]="tree" (nodeSelected)="displayNodeDetails($event)"></app-tree>
+  </div>
+  <div style="width: 50%; padding-left: 20px;">
+    <h2>{{ selectedItem?.name }}</h2>
+  </div>
+</div>

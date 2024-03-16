@@ -10,4 +10,10 @@ import { jsonToNode, Node } from 'src/utils';
 export class AppComponent {
   title = 'tabapay-assignment';
   tree: Node[] = data.map(jsonToNode);
+  selectedItem: Node | null = null;
+
+  constructor() { }
+  displayNodeDetails(node: Node): void {
+    this.selectedItem = node;
+  }
 }

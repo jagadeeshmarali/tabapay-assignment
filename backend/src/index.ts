@@ -1,9 +1,11 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3000;
+app.use(cors());
 
 app.get('/data', (req, res) => {
   const dataPath = path.join(__dirname, 'data.json');

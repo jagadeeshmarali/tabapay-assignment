@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { data } from 'src/data/data';
+import { environment } from 'src/environments/environment';
 import { jsonToNode, Node } from 'src/utils';
 
 @Component({
@@ -9,10 +10,17 @@ import { jsonToNode, Node } from 'src/utils';
 })
 export class AppComponent {
   title = 'tabapay-assignment';
-  tree: Node[] = data.map(jsonToNode);
+  tree: Node[] = [];
   selectedItem: Node | null = null;
 
-  constructor() { }
+  constructor(private httpclient: HttpClient) {
+    this.loadData();
+  }
+  loadData() {
+    this.httpclient.get(`${environment.backend_url}/data`).subscribe((data: any) => {
+      this.tree = data.map(jsonToNode)
+    })
+  }
   displayNodeDetails(node: Node): void {
     this.selectedItem = node;
   }

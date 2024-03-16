@@ -1,0 +1,11 @@
+<div class="modal-background" *ngIf="show">
+  <div class="modal">
+    <header class="modal-header">
+      <span>Node Clicked</span>
+      <button class="close-button" (click)="close()">×</button>
+    </header>
+    <div class="modal-content">
+      <p>The clicked Item is : {{ nodeName }}</p>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { data } from 'src/data/data';
+import { jsonToNode, Node } from 'src/utils';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tabapay-assignment';
+  tree: Node[] = data.map(jsonToNode);
 }

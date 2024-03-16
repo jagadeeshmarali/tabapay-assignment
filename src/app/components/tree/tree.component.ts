@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Node } from 'src/utils';
 
 @Component({
@@ -7,8 +7,8 @@ import { Node } from 'src/utils';
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent implements OnInit {
-  @Input()
-  tree: Node[] = [];
+  @Input() tree: Node[] = [];
+  @Output() nodeSelected = new EventEmitter<Node>();
   expandedStates: { [key: string]: boolean } = {};
   isModalOpen = false;
   selectedNodeName: string = '';
@@ -26,5 +26,9 @@ export class TreeComponent implements OnInit {
   openDialog(nodeName: string): void {
     this.selectedNodeName = nodeName;
     this.isModalOpen = true;
+  }
+  onNodeClick(node: Node, event: MouseEvent): void {
+    event.stopPropagation();
+    this.nodeSelected.emit(node);
   }
 }

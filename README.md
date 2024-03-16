@@ -33,7 +33,6 @@ npm run start
 ```
 The frontend application should now be running and accessible at localhost:4200
 
-# Demo
+# Demos
 
-#### Part1
-[](demo/part1.mov)
+[Part1](demo/part1.mov), [Part2](demo/part2.mov), [Part3](demo/part3.mov), [Part4](demo/part4.mov), [Part5](demo/part5.mov)

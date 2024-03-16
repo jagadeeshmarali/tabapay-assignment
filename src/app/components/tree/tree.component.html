@@ -1,0 +1,16 @@
+<ul>
+  <ng-container *ngFor="let item of tree">
+    <li>
+      <span *ngIf="item.children && item.children.length > 0" (click)="toggleExpandState(item.name)" class="expandable"
+        [class.expanded]="isExpanded(item.name)">
+        {{ isExpanded(item.name) ? '▼' : '►' }} {{ item.name }}
+      </span>
+      <label *ngIf="!item.children || item.children.length === 0" class="leaf-node">
+        <input checked type="radio" name={{item.name}} [value]="item.name"> {{ item.name }}
+      </label>
+    </li>
+    <ul *ngIf="isExpanded(item.name) && item.children && item.children.length > 0">
+      <app-tree [tree]="item.children"></app-tree>
+    </ul>
+  </ng-container>
+</ul>
